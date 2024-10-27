@@ -29,7 +29,7 @@ def create_post_view(request):
     if request.method == 'GET':
         form = PostForm()
         return render(request, 'posts/create_post.html', {'form': form})
-    elif request.method == 'POST':
+    if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if not form.is_valid():
             return render(request, 'posts/create_post.html', {'form': form})
